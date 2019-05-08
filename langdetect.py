@@ -9,3 +9,10 @@ Created on Wed May  8 12:10:27 2019
 
 def prepare(text):
     return print("Nope")
+
+def prepare()
+def trigrams()
+def trigram_table()
+def read_table()
+def write_table()
+def cosine_similarity()
