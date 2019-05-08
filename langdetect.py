@@ -8,4 +8,4 @@ Created on Wed May  8 12:10:27 2019
 #Testtest
 
 def prepare(text):
-    wjfhwsdm
+    return print("Nope")
