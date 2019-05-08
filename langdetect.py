@@ -13,15 +13,15 @@ def prepare(text):
 
 text = "Hallo dit is een test"
 
-def trigrams(text):
+def trigrams(seq):
     x = 0
     trigram_list = []
-    while x < len(text)-2:
-        trigram_list.append(text[x]+text[x+1]+text[x+2])
+    while x < len(seq)-2:
+        trigram_list.append(seq[x]+seq[x+1]+seq[x+2])
         x+=1
     return trigram_list
 
-print(trigrams(text))
+print(trigrams(seq))
 
 def trigrams_table(text, limit = 0):
     new_text = prepare(text)
