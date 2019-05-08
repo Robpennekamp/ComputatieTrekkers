@@ -23,5 +23,13 @@ def trigrams(text):
 
 print(trigrams(text))
 
+def trigrams_table(text, limit = 0):
+    new_text = prepare(text)
+    for word in new_text:
+        word = "<" + word + ">"
     
-    
+
+
+woord = "Hallo"
+woord = "<" + woord + ">"
+print(woord)
