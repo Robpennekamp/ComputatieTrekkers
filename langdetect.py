@@ -8,7 +8,7 @@ Created on Wed May  8 12:10:27 2019
 #Testtest
 import re
 def prepare(text):
-    return print("Nope")
+    return re.sub('[\!\?\,\"\.\(\)\<\>]', ' ', string).split()
 
 
 text = "Hallo dit is een test"
