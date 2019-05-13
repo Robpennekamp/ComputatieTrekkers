@@ -52,8 +52,8 @@ def trigram_table(text, limit = 0):
     return new_dict
 
 def write_trigrams(table, filename):
-    for n in range(len(table)):
-        filename.write(n)
+    for key, value in table.items():
+        filename.write(value + " " + key, encoding="utf-8")
 
 def read_trigrams(filename):
     bestand = open(filename, "r", encoding="utf-8")
