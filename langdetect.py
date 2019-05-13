@@ -59,7 +59,7 @@ def write_trigrams(table, filename):
 
 def read_trigrams(filename):
     bestand = open(filename, "r", encoding="utf-8")
-
+    
 def cosine_similarity(known, unknown):
     #known is the language we know 
     #unknown is the piece of text we need to analyze.
