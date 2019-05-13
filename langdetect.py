@@ -60,12 +60,13 @@ def write_trigrams(table, filename):
     tablefile.close()
 
 def read_trigrams(filename):
-    bestand = open(filename, "r", encoding="utf-8")
+    bestand = open(filename, "r")
     woordenboek = {}
     for line in bestand:
         value = int(line.split()[0])
         key = line.split()[1]
         woordenboek[key] = value
+    return woordenboek
 
 def cosine_similarity(known, unknown):
     #known is the language we know
@@ -80,10 +81,8 @@ def cosine_similarity(known, unknown):
         except:
             vknown = 0
         ab = value * vknown
-        print(ab)
         sumab += ab
         magsuma += value ** 2
-        print(magsuma)
     for key, value in known.items():
         magsumb += value ** 2
     maga = np.sqrt(magsuma)
