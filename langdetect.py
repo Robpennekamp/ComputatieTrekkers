@@ -89,3 +89,5 @@ def cosine_similarity(known, unknown):
     magb = np.sqrt(magsumb)
     cossim = sumab / (maga*magb)
     return cossim
+
+
