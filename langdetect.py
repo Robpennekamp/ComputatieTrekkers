@@ -54,11 +54,14 @@ def trigram_table(text, limit = 0):
     return new_dict
 
 def write_trigrams(table, filename):
+    tablefile = open(filename, "w")
     for key, value in table.items():
-        filename.write(value + " " + key, encoding="utf-8")
+        tablefile.write(str(value) + " " + str(key) + '\n')
+    tablefile.close()
 
 def read_trigrams(filename):
     bestand = open(filename, "r", encoding="utf-8")
+    #for n = 
 
 def cosine_similarity(known, unknown):
     #known is the language we know 
