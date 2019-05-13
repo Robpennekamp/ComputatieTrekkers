@@ -8,6 +8,7 @@ Created on Wed May  8 12:10:27 2019
 #Testtest
 import re
 import collections
+import os.path
 def prepare(text):
     return re.sub('[\!\?\,\"\.\(\)\<\>]', ' ', text).split()
 
@@ -51,12 +52,20 @@ def trigram_table(text, limit = 0):
 #    sorted_dict = sorted(new_dict.items(), key = lambda k:k[1], reverse = True)
     return new_dict
 
+
+
+
 def write_trigrams(table, filename):
+    tablefile = open(filename, "w")
     for key, value in table.items():
-        filename.write(value + " " + key, encoding="utf-8")
+        
+        tablefile.write(str(value) + " " + str(key) + '\n')
+    tablefile.close()
 
-def read_trigrams(filename):
-    bestand = open(filename, "r", encoding="utf-8")
+#def read_trigrams(filename):
+#    bestand = open(filename, "r", encoding="utf-8")
 
-def cosine_similarity():
+#def cosine_similarity():
     #doetiets
+
+
