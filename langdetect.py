@@ -66,6 +66,7 @@ def read_trigrams(filename):
         value = int(line.split()[0])
         key = line.split()[1]
         woordenboek[key] = value
+    return woordenboek
 
 def cosine_similarity(known, unknown):
     #known is the language we know
