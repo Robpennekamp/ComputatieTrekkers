@@ -67,7 +67,7 @@ def read_trigrams(filename):
         woordenboek[n] = int(n[0])
 
 def cosine_similarity(known, unknown):
-    #known is the language we know 
+    #known is the language we know
     #unknown is the piece of text we need to analyze.
     #both are dictionaries
     sumab = 0
