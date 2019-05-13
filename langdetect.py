@@ -50,3 +50,12 @@ def trigram_table(text, limit = 0):
     #print(new_dict)
 #    sorted_dict = sorted(new_dict.items(), key = lambda k:k[1], reverse = True)
     return new_dict
+
+def write_trigrams():
+    #doetiets
+
+def read_trigrams():
+    #doetiets
+
+def cosine_similarity():
+    #doetiets
