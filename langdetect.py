@@ -61,10 +61,11 @@ def write_trigrams(table, filename):
 
 def read_trigrams(filename):
     bestand = open(filename, "r", encoding="utf-8")
-    bestand_1 = bestand.split()
     woordenboek = {}
-    for n in bestand: 
-        woordenboek[n] = int(n[0])
+    for line in bestand:
+        value = line.split()[0]
+        key = line.split()[1]
+        woordenboek[key] = value
 
 def cosine_similarity(known, unknown):
     #known is the language we know
