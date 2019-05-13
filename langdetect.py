@@ -51,11 +51,12 @@ def trigram_table(text, limit = 0):
 #    sorted_dict = sorted(new_dict.items(), key = lambda k:k[1], reverse = True)
     return new_dict
 
-def write_trigrams():
-    #doetiets
+def write_trigrams(table, filename):
+    for n in range(len(table)):
+        outfile.write(n)
 
-def read_trigrams():
-    #doetiets
+def read_trigrams(filename):
+    bestand = open(filename, "r", encoding="utf-8")
 
 def cosine_similarity():
     #doetiets
