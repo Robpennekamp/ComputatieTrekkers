@@ -81,10 +81,8 @@ def cosine_similarity(known, unknown):
         except:
             vknown = 0
         ab = value * vknown
-        print(ab)
         sumab += ab
         magsuma += value ** 2
-        print(magsuma)
     for key, value in known.items():
         magsumb += value ** 2
     maga = np.sqrt(magsuma)
