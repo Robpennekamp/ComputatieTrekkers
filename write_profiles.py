@@ -13,4 +13,4 @@ def make_profiles(datafolder, profilefolder, size):
         langdetect.write_trigrams(test, 'trigram-models/' + filename)
         newfile.close()
         
-make_profiles("training", "trigram-models", 10)
+make_profiles("training", "trigram-models", 200)
