@@ -53,7 +53,7 @@ def trigram_table(text, limit = 0):
 
 def write_trigrams(table, filename):
     for n in range(len(table)):
-        outfile.write(n)
+        filename.write(n)
 
 def read_trigrams(filename):
     bestand = open(filename, "r", encoding="utf-8")
