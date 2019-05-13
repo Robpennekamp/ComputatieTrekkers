@@ -63,7 +63,7 @@ def read_trigrams(filename):
     bestand = open(filename, "r", encoding="utf-8")
     woordenboek = {}
     for line in bestand:
-        value = line.split()[0]
+        value = int(line.split()[0])
         key = line.split()[1]
         woordenboek[key] = value
 
