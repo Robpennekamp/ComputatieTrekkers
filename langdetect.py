@@ -8,6 +8,8 @@ Created on Wed May  8 12:10:27 2019
 #Testtest
 import re
 import collections
+import numpy as np
+
 def prepare(text):
     return re.sub('[\!\?\,\"\.\(\)\<\>]', ' ', text).split()
 
@@ -58,5 +60,26 @@ def write_trigrams(table, filename):
 def read_trigrams(filename):
     bestand = open(filename, "r", encoding="utf-8")
 
-def cosine_similarity():
-    #doetiets
+def cosine_similarity(known, unknown):
+    #known is the language we know 
+    #unknown is the piece of text we need to analyze.
+    #both are dictionaries
+    sumab = 0
+    magsuma = 0
+    magsumb = 0
+    for key, value in unknown.items():
+        try:
+            vknown = known[key]
+        except:
+            vknown = 0
+        ab = value * vknown
+        print(ab)
+        sumab += ab
+        magsuma += value ** 2
+        print(magsuma)
+    for key, value in known.items():
+        magsumb += value ** 2
+    maga = np.sqrt(magsuma)
+    magb = np.sqrt(magsumb)
+    cossim = sumab / (maga*magb)
+    return cossim
