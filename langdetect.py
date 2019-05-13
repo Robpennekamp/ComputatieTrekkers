@@ -60,7 +60,7 @@ def write_trigrams(table, filename):
     tablefile.close()
 
 def read_trigrams(filename):
-    bestand = open(filename, "r", encoding="utf-8")
+    bestand = open(filename, "r")
     woordenboek = {}
     for line in bestand:
         value = int(line.split()[0])
