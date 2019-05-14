@@ -13,8 +13,13 @@ import os
 class LangMatcher:
     
     def __init__(self, path):
-        self.dictionary = 
+        make_profiles(path, 'trigram-models', 200)
+        languages =[]
+        for file in mainfile:
+            languages.append(file.split("-")[0])
+            trigram_table()
+        
     
     def score(self, text, n=1, ngrams=200):
         langdetect.trigram_table(text, ngrams)
-        
+
