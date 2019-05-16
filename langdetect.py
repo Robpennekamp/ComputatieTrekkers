@@ -7,7 +7,6 @@ Created on Wed May  8 12:10:27 2019
 
 #Testtest
 import re
-import collections
 import numpy as np
 
 def prepare(text):
