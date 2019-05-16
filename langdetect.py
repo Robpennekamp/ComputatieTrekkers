@@ -47,10 +47,12 @@ def trigram_table(text, limit = 0):
     full_list.sort(key=lambda x: x[1], reverse=True)
     if(limit == 0):
         limit = len(full_list)
+    elif(limit > len(full_list)):
+        limit = len(full_list)
     for i in range(0, limit):
         new_dict[full_list[i][0]] = full_list[i][1]
     #print(new_dict)
-#    sorted_dict = sorted(new_dict.items(), key = lambda k:k[1], reverse = True)
+    #sorted_dict = sorted(new_dict.items(), key = lambda k:k[1], reverse = True)
     return new_dict
 
 def write_trigrams(table, filename):
@@ -60,7 +62,7 @@ def write_trigrams(table, filename):
     tablefile.close()
 
 def read_trigrams(filename):
-    bestand = open(filename, "r")
+    bestand = open(filename, "r", encoding='utf-8')
     woordenboek = {}
     for line in bestand:
         value = int(line.split()[0])
@@ -89,5 +91,3 @@ def cosine_similarity(known, unknown):
     magb = np.sqrt(magsumb)
     cossim = sumab / (maga*magb)
     return cossim
-
-
