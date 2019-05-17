@@ -12,7 +12,6 @@ import sys
 
 class LangMatcher:
 
-    #initializer, maakt een dictionary van de trigram profielen
     def __init__(self, path):
         """
         Creates a dictionary of dictionaries of languages with their respecitve trigram tables.
@@ -27,8 +26,7 @@ class LangMatcher:
             models[lang] = model
         self.models = models
 
-    #maakt een trigramtabel van de tekst en vergelijkt deze met de talen in models dictionary
-    #returnt scores voor cosine similarity
+
     def score(self, text, n=1, ngrams=200):
         """
         Creates a trigramtable for the text to be analyzed, takes the top ngrams-ngrams and 
@@ -48,25 +46,31 @@ class LangMatcher:
         return scoretable[0: n]
 
 
-    #returnt de hoogste cosine similarity score en taal voor een file
     def recognize(self, filename, encoding="utf-8", ngrams=200):
         """
         Uses the score-function to return the most similar language.
         
-        filename: 
-        encoding:
-        ngrams:
+        filename: the filename of the file to be analyzed.
+        encoding: the encoding with which the file should be read.
+        ngrams: decides the ngram-amount of most frequent trigrams per language to be reported.
         """
         file = open(filename, 'r', encoding)
         file.close()
         return self.score(file, 1, 200)
 
 
-args = sys.argv
-matcher = LangMatcher('trigram-models/')
+args = sys.argv                                 
+matcher = LangMatcher('trigram-models/')            #Initializes a Langmatcher object
 
 #geeft de beste taal en cosine similarity score
 def findMatch(filename, encoding):
+    """
+    Opens the file in a Langmatcher object to return the score of the most similar language, 
+    using the Langmatcher class.
+
+    filename: the filename of the file to be analyzed.
+    encoding: the encoding with which the file should be read.
+    """
     file = open('test-clean/' + filename, 'r', encoding=encoding)
     best = matcher.score(file.read(), 1,200)
     file.close()
@@ -75,7 +79,8 @@ def findMatch(filename, encoding):
 
 
 
-#print het resultaat van de bovenstaande functies
+#Prints the results of the findMatch function per file, which consist of the filename, 
+#the most similar language, and its similarity score.
 for arg in args:
     encoding = 'utf-8'
     if('-e' in arg):
