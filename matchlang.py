@@ -43,16 +43,21 @@ def findMath(filename):
     file = open('test-clean/' + filename, 'r', encoding='utf-8')
     best = matcher.score(file.read(), 1,200)
     file.close()
-    print(filename + '\t' + best[0][0] + '\t' + str(best[0][1]) )
+    #print(filename + '\t' + best[0][0] + '\t' + str(best[0][1]) )
+    return best
 args = sys.argv
 matcher = LangMatcher('trigram-models/')
 
 for arg in args:
     if('.py' not in arg and '*' not in arg):
-        findMath(arg)
+        best = findMath(arg)
+        print(arg + '\t' + best[0][0] + '\t' + str(best[0][1]) )
+
     elif('*' in arg):
         spec = arg.split('*')[1]
         files = os.listdir('test-clean/'+ arg.split('*')[0])
         for file in files:
             if(spec in file):
-                findMath(arg.split('*')[0] + file)
+                filename = arg.split('*')[0] + file
+                best = findMath(filename)
+                print(filename + '\t' + best[0][0] + '\t' + str(best[0][1]) )
