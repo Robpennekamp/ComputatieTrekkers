@@ -16,6 +16,12 @@ dict = {
 
 #vergelijkt de talen en telt de hoeveelheid correcte en incorrecte matches
 def eval(path):
+    """
+    This is a function, in which you enter a path as parameter to a directory which is filled with textfiles.
+    The function will return, for each file seperately, the language with which it's trigrams correspond the most.
+    
+    path: The path from the main file to the directory with all the textfiles you want analyzed.
+    """
     dir = os.listdir('test-clean/' + path)
     correctCount = 0
     errorCount = 0

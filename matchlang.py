@@ -14,6 +14,11 @@ class LangMatcher:
 
     #initializer, maakt een dictionary van de trigram profielen
     def __init__(self, path):
+        """
+        Creates a dictionary of dictionaries of languages with their respecitve trigram tables.
+        
+        Path: The path to the directory with all the trainingfiles for all languages.
+        """
         files = os.listdir(path)
         models = {}
         for file in files:
@@ -25,6 +30,14 @@ class LangMatcher:
     #maakt een trigramtabel van de tekst en vergelijkt deze met de talen in models dictionary
     #returnt scores voor cosine similarity
     def score(self, text, n=1, ngrams=200):
+        """
+        Creates a trigramtable for the text to be analyzed, takes the top ngrams-ngrams and 
+        returns a array of arrays of languages with the n-highest similarity-scores.
+        
+        text: The text to be analyzed
+        n: Return the n-most similar languages
+        ngrams: decides the ngram-amount of most frequent trigrams per language to be reported.
+        """
         trigram = langdetect.trigram_table(text, ngrams)
         scoretable = []
         for key, value in self.models.items():
@@ -37,6 +50,13 @@ class LangMatcher:
 
     #returnt de hoogste cosine similarity score en taal voor een file
     def recognize(self, filename, encoding="utf-8", ngrams=200):
+        """
+        Uses the score-function to return the most similar language.
+        
+        filename: 
+        encoding:
+        ngrams:
+        """
         file = open(filename, 'r', encoding)
         file.close()
         return self.score(file, 1, 200)
