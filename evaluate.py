@@ -20,7 +20,7 @@ def eval(path):
     correctCount = 0
     errorCount = 0
     for file in dir:
-        match = matchlang.findMath(path +'/'+ file)[0][0]
+        match = matchlang.findMatch(path +'/'+ file)[0][0]
         correct = file.split(".")[1]
         if(dict[correct] == match):
             print(file + ': ' + match)

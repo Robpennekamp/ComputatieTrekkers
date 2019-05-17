@@ -44,7 +44,7 @@ class LangMatcher:
         return self.score(file, 1, 200)
 
 #geeft de beste taal en cosine similarity score
-def findMath(filename):
+def findMatch(filename):
     file = open('test-clean/' + filename, 'r', encoding='utf-8')
     best = matcher.score(file.read(), 1,200)
     file.close()
@@ -56,7 +56,7 @@ matcher = LangMatcher('trigram-models/')
 #print het resultaat van de bovenstaande functies
 for arg in args:
     if('.py' not in arg and '*' not in arg):
-        best = findMath(arg)
+        best = findMatch(arg)
         print(arg + '\t' + best[0][0] + '\t' + str(best[0][1]) )
 
     elif('*' in arg):
@@ -65,5 +65,5 @@ for arg in args:
         for file in files:
             if(spec in file):
                 filename = arg.split('*')[0] + file
-                best = findMath(filename)
+                best = findMatch(filename)
                 print(filename + '\t' + best[0][0] + '\t' + str(best[0][1]) )
