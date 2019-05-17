@@ -32,10 +32,8 @@ class LangMatcher:
             model = value
             scoretable.append([lang, langdetect.cosine_similarity(model, trigram)])
         scoretable.sort(key=lambda x: x[1], reverse=True)
-        bestlangs = []
-        for i in range(n):
-            bestlangs.append([scoretable[i][0], scoretable[i][1]])
-        return bestlangs
+        return scoretable[0: n]
+
 
     #returnt de hoogste cosine similarity score en taal voor een file
     def recognize(self, filename, encoding="utf-8", ngrams=200):
