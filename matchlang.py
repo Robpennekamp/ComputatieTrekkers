@@ -12,6 +12,7 @@ import sys
 
 class LangMatcher:
 
+    #initializer, maakt een dictionary van de trigram profielen
     def __init__(self, path):
         files = os.listdir(path)
         models = {}
@@ -21,6 +22,8 @@ class LangMatcher:
             models[lang] = model
         self.models = models
 
+    #maakt een trigramtabel van de tekst en vergelijkt deze met de talen in models dictionary
+    #returnt scores voor cosine similarity
     def score(self, text, n=1, ngrams=200):
         trigram = langdetect.trigram_table(text, ngrams)
         scoretable = []
@@ -34,11 +37,13 @@ class LangMatcher:
             bestlangs.append([scoretable[i][0], scoretable[i][1]])
         return bestlangs
 
+    #returnt de hoogste cosine similarity score en taal voor een file
     def recognize(self, filename, encoding="utf-8", ngrams=200):
         file = open(filename, 'r', encoding)
         file.close()
         return self.score(file, 1, 200)
 
+#geeft de beste taal en cosine similarity score
 def findMath(filename):
     file = open('test-clean/' + filename, 'r', encoding='utf-8')
     best = matcher.score(file.read(), 1,200)
@@ -48,6 +53,7 @@ def findMath(filename):
 args = sys.argv
 matcher = LangMatcher('trigram-models/')
 
+#print het resultaat van de bovenstaande functies
 for arg in args:
     if('.py' not in arg and '*' not in arg):
         best = findMath(arg)

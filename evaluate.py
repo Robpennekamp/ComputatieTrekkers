@@ -14,6 +14,7 @@ dict = {
     'sv': 'Swedish',
 }
 
+#vergelijkt de talen en telt de hoeveelheid correcte en incorrecte matches
 def eval(path):
     dir = os.listdir('test-clean/' + path)
     correctCount = 0
