@@ -1,17 +1,28 @@
 0.	Voorbereiding
 	CONLL2002 corpus – ned.train file gebruiken om de modellen te trainen.
-1.	Minimale NER tagger
-	custom_chunker.py (gegeven) gebruiken om te trainen
-	-	Pickle (10.6)
+1.	Stap 1: Minimale NER tagger
+	custom_chunker.py (gegeven) gebruiken om een entity recognizer te trainen. Daarna:
+	-	Pickle de entity (10.6)
 	-	Meet de performance (12.1.4)
-2.	Script:
+2.	Stap 2: Script
 	-	Custom_chunker.py (gegeven, niks veranderen)
 o	Nodig: training dataset of chunked sentences and a feature extractor function die intern wordt 		gebruikt tijdens training en normaal gebruik.
 	-	Features.py
-		o	Features_simple_1()
-				
+		o	Features_simple_1(sentence, i, history)
+			Tagged sentence, index i van een woord in de sentence, lijst history met de IOB tags
+			Must return dictionary van de extracted features (welke features?)
+			Hierna kunnen we een recognizer trainen
+		o 	evaluate()
+			Recognizer evalueren --> ned.testa
 	Je kan nu beide modules importeren.
-3.	
+3.	Na het picklen mag je de functies en klassen niet veranderen.
+	Gebruik een andere naam voor elke versie van de feature extraction functie.
+	Alle nodige klassen en functies moeten worden gedefinieerd in modules en geimporteerd in de main script.
+4.	Self-testing
+	- model_test.py (gegeven, niks veranderen)
+5.	Stap 3: Feature selectie verbeteren
+	Trainen met ned.train en evalueren met ned.testa.
+	Vb: Capitalization informatie, aantal letters, tags, 
 
 
-Pickle = module which allows us to write out and later restore large, complex objects very easily.
+Pickle = module which allows us to write out and later restore large, complex objects very easily. Pickling stores only data, not functions or class definitions.
