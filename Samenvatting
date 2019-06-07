@@ -22,7 +22,34 @@ o	Nodig: training dataset of chunked sentences and a feature extractor function 
 	- model_test.py (gegeven, niks veranderen)
 5.	Stap 3: Feature selectie verbeteren
 	Trainen met ned.train en evalueren met ned.testa.
-	Vb: Capitalization informatie, aantal letters, tags, 
+	Vb: Capitalization informatie, aantal letters, tags, of  het een woord volgt dat al gemarkeerd is als deel van een entity, etc.
+	Externe bronnen zijn toegestaan.
+	Je hoeft niet elke versie te reporten, maar wel meer dan een demonstratie.
+6.	Stap 4: Machine learning engines vergelijken
+	custom_chunker gebruikt de MaxEnt classifier. 
+	Je kan een leeralgoritme selecteren door het algorithm argument van ConsecutiveNPChunker te gebruiken. Alle beschikbare algoritmen zien: print(nltk.classify.MaxentClassifier.ALGORITHMS).
+	Werk met IIS, GIS en NaiveBayes classifier. Voor NaiveBayes moet je dingen veranderen in custom_chunker.
+7.	Stap 5: Performance evaluatie
+	Train de beste classifier op ned.train, pickle het en evalueer het op de data in ned.testa. Stop het in een verslag. 
+	- Je kan ConfusionMatrix() gebruiken om fouten te identificeren.
+	- ChunkScore() kan handig zijn.
+	Baseline: 6 features met 60% performance. 
+8. 	Stap 6: Submissie 
+	Files:
+	- BuildModels.py - Trains en pickles de verschillende classifiers.
+	- EvaluateModels.py - Laad en evalueert de modellen. Het moet in ieder geval printen:
+		o 	Iets dat de model/feature set identificeert
+		o 	Precisie
+		o 	Recall
+		o 	F-score
+		o 	Meer is aangeraden
+	- features.py - Definieert of importeert een of meerdere feature extractor functies.
+	- custom_chunker.py
+	- Evaluation-output.txt met de opgeslagen output van de evaluatie.
+	- Andere files met externe data.
+
+	- Best.pickle - Pickled model van de beste classifier. Test of het kan worden reloaded met model_test (het aanpassen hiervan is aftrek).
+	- Kort verslag met onze bevindingen van stap 4.
 
 
 Pickle = module which allows us to write out and later restore large, complex objects very easily. Pickling stores only data, not functions or class definitions.
