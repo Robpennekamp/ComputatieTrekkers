@@ -1,0 +1,17 @@
+0.	Voorbereiding
+	CONLL2002 corpus – ned.train file gebruiken om de modellen te trainen.
+1.	Minimale NER tagger
+	custom_chunker.py (gegeven) gebruiken om te trainen
+	-	Pickle (10.6)
+	-	Meet de performance (12.1.4)
+2.	Script:
+	-	Custom_chunker.py (gegeven, niks veranderen)
+o	Nodig: training dataset of chunked sentences and a feature extractor function die intern wordt 		gebruikt tijdens training en normaal gebruik.
+	-	Features.py
+		o	Features_simple_1()
+				
+	Je kan nu beide modules importeren.
+3.	
+
+
+Pickle = module which allows us to write out and later restore large, complex objects very easily.
