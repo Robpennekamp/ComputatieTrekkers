@@ -78,7 +78,8 @@ class _ConsecutiveNPChunkTagger(nltk.TaggerI):
                 featureset = self._featuremap(untagged_sent, i, history) 
                 train_set.append( (featureset, tag) )
                 history.append(tag) 
-        self.classifier = nltk.MaxentClassifier.train( 
+        if algorithm == "IIS":
+             self.classifier = nltk.MaxentClassifier.train( 
             train_set, algorithm=algorithm, trace=0)
 
     def tag(self, sentence):
