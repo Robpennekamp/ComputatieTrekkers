@@ -40,12 +40,13 @@ def suf3(sentence, i, history):
 def suf4(sentence, i, history):
     return{"suf4": sentence[i][-4:]}
 def pred(sentence, i, history):
-    return {"pred": '' if index == 0 else: sentence[i -1 ]}
-def next(sentence, i, history):
-    return {"next": '' if index == len(sentence) - 1 else: sentence[i+1]}
+    return {"pred": '' if i == 0 else sentence[i -1 ]}
+def Next(sentence, i, history):
+    return {"next": '' if i == len(sentence) - 1 else sentence[i+1]}
 def hypen(sentence, i , history):
-    return{"hypen": '-' in sentence[i]}
+    return{"hyphen": '-' in sentence[i]}
 def numeric(sentence, i, history):
     return{"numeric": sentence[i].isdigit()}
 def hascapital(sentence, i, history):
     return{"hascapital" : sentence[i][1:].lower() != sentence[i][1:].lower()}
+    
