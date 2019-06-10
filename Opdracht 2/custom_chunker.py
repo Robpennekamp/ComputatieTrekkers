@@ -78,12 +78,15 @@ class _ConsecutiveNPChunkTagger(nltk.TaggerI):
                 featureset = self._featuremap(untagged_sent, i, history)
                 train_set.append( (featureset, tag) )
                 history.append(tag)
-        if algorithm == "IIS" or algorithm == "GIS":
-             self.classifier = nltk.MaxentClassifier.train(
-            train_set, algorithm=algorithm, trace=0)
+        if algorithm == "GIS":
+            self.classifier = nltk.MaxentClassifier.train(
+            train_set, algorithm="GIS", trace=0)
+        elif algorithm == "NaiveBayes":
+            self.classifier = nltk.NaiveBayesClassifier.train(
+            train_set)
         else:
-            self.classifier = nltk.NaiveBayes.train(
-            train_set, algortihm=algorithm, trace=0
+            self.classifier = nltk.MaxentClassifier.train(
+            train_set, algorithm=algorithm, trace=0
             )
 
     def tag(self, sentence):

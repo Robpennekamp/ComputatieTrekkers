@@ -18,4 +18,4 @@ result = ner.parse_sents(tagzinnen)
 
 # Usage 2: self-evaluate (on chunked sentences)
 chunkzinnen = conll.chunked_sents("ned.testa")[1000:1500]
-print(ner.evaluate(chunkzinnen))
+print(ner.evaluate(chunkzinnen))    
