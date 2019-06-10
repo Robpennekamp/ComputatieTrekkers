@@ -23,7 +23,10 @@ def simple_features_1(sentence, i, history):
             "allcaps": word == word.upper(),
             "hascaps": word[1:].lower() != word[1:],
             "first": i ==0,
-            "last": word == sentence[-1][0]
+            "last": word == sentence[-1][0],
+            "numeric": word.isdigit(),
+            "hypen": "-" in word,
+            "colon": ":" in word
             }
 
 
