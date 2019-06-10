@@ -6,6 +6,8 @@ Created on Fri Jun  7 11:27:05 2019
 """
 from nltk.corpus import conll2002 as conll
 from custom_chunker import ConsecutiveNPChunker
+import pickle
+import features
 
 
 tiny_sample = 1000
