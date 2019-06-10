@@ -36,7 +36,7 @@ class ConsecutiveNPChunker(nltk.ChunkParserI):
         for the arguments it must accept.
 
     train_sents  A list of sentences in chunked (Tree) format.
-    
+
     algorithm  (optional). The name of the machine-learning model to use.
     """
     def __init__(self, featuremap, train_sents, algorithm="IIS"):
@@ -51,13 +51,13 @@ class ConsecutiveNPChunker(nltk.ChunkParserI):
         return conlltags2tree(conlltags)
 
     chunk = parse  # A synonym for the absent-minded
-    
+
     def explain(self):
         """Print the docstring of our feature extraction function"""
         print("Algorithm:", self._algorithm)
         # Print the feature map's help string:
         print(self.tagger._featuremap.__doc__)
- 
+
     def show_most_informative_features(self, n=10):
         """Call our classifier's `show_most_informative_features()` function."""
         self.tagger.classifier.show_most_informative_features(n)
@@ -68,19 +68,23 @@ class _ConsecutiveNPChunkTagger(nltk.TaggerI):
     used directly: Use ConsecutiveNPChunker instead."""
 
     def __init__(self, featuremap, train_sents, algorithm):
-        
+
         self._featuremap = featuremap
         train_set = []
         for tagged_sent in train_sents:
             untagged_sent = nltk.tag.untag(tagged_sent)
             history = []
             for i, (word, tag) in enumerate(tagged_sent):
-                featureset = self._featuremap(untagged_sent, i, history) 
+                featureset = self._featuremap(untagged_sent, i, history)
                 train_set.append( (featureset, tag) )
-                history.append(tag) 
-        if algorithm == "IIS":
-             self.classifier = nltk.MaxentClassifier.train( 
+                history.append(tag)
+        if algorithm == "IIS" or algorithm == "GIS":
+             self.classifier = nltk.MaxentClassifier.train(
             train_set, algorithm=algorithm, trace=0)
+        else:
+            self.classifier = nltk.NaiveBayes.train(
+            train_set, algortihm=algorithm, trace=0
+            )
 
     def tag(self, sentence):
         history = []
