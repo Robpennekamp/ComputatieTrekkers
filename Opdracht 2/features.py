@@ -37,7 +37,8 @@ def simple_features_2(sentence, i, history):
             hasdigit = True
     
     #print(word)
-    return { "pos": pos,
+    return { 
+            "pos": pos,
             "pre1": word[0],
             "pre2": word[:2],
             "pre3": word[:3],
@@ -60,5 +61,6 @@ def simple_features_2(sentence, i, history):
             "seqpos": '' if word == sentence[-1][0] else sentence[i+1][1],
             "seqcaps": '' if word == sentence[-1][0] else sentence[i+1][0].upper() == sentence[i+1],
             "date": hasdigit and "-" in word,
-            "preqin":'' if i==0 else sentence[i-1][0] == 'in'
+            "preqin":'' if i==0 else sentence[i-1][0] == 'in',
+            
             }
