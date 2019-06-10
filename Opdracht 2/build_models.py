@@ -18,7 +18,7 @@ import features
 import pickle
 >>>>>>> 2b400deb633055fbe9e2b750a367f65197c93097
 
-tiny_sample = 50
+tiny_sample = 1
 # training = conll.chunked_sents("ned.train")  # Train with full dataset
 training = conll.chunked_sents("ned.train")[:tiny_sample] # SHORT DATASET: FOR DEMO/DEBUGGING ONLY!
 testing = conll.chunked_sents("ned.testa")
