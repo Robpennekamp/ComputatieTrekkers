@@ -49,5 +49,7 @@ def simple_features_2(sentence, i, history):
             "hypen": "-" in word,
             "colon": ":" in word,
             "pred": '' if i==0 else sentence[i-1][0],
-            "predpos": '' if i==0 else sentence[i-1][1]
+            "predpos": '' if i==0 else sentence[i-1][1],
+            "preq": '' if word == sentence[-1][0] else sentence[i+1][0],
+            "preqpos": '' if word == sentence[-1][0] else sentence[i+1][1]
             }
