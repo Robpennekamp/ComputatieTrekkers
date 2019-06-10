@@ -9,7 +9,11 @@ from custom_chunker import ConsecutiveNPChunker
 import pickle
 import features
 
+<<<<<<< HEAD
 tiny_sample = 10000
+=======
+tiny_sample = 500
+>>>>>>> 2796aefcf4f2531207fb793fcf7920b9963c7c9e
 # training = conll.chunked_sents("ned.train")  # Train with full dataset
 training = conll.chunked_sents("ned.train") # SHORT DATASET: FOR DEMO/DEBUGGING ONLY!
 testing = conll.chunked_sents("ned.testa")
