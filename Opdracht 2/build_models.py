@@ -9,11 +9,11 @@ from custom_chunker import ConsecutiveNPChunker
 import pickle
 import features
 
-tiny_sample = 500
+tiny_sample = 50
 # training = conll.chunked_sents("ned.train")  # Train with full dataset
 training = conll.chunked_sents("ned.train")[:tiny_sample] # SHORT DATASET: FOR DEMO/DEBUGGING ONLY!
 testing = conll.chunked_sents("ned.testa")
-simple_nl_NER = ConsecutiveNPChunker(features.simple_features_2, training)
+simple_nl_NER = ConsecutiveNPChunker(features.simple_features_2, training, 'GIS')
 
 #output = open("nl-tagger.pickle", "wb")
 #pickle.dump(simple_nl_NER, output)
