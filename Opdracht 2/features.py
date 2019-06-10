@@ -10,8 +10,25 @@ from nltk.corpus import conll2002 as conll
 def simple_features_1(sentence, i, history):
     """Simplest chunker features: Just the POS tag of the word"""
     word, pos = sentence[i]
-    return { "pos": pos }
+    return { "pos": pos,
+            "pre1": word[0],
+            "pre2": word[:2],
+            "pre3": word[:3],
+            "pre4": word[:4],
+            "suf1": word[-1],
+            "suf2": word[-2:],
+            "suf3": word[-3:],
+            "suf4": word[-4:],
+            "cap": word[0] == word[0].upper(),
+            "allcaps": word == word.upper(),
+            "hascaps": word[1:].lower() != word[1:],
+            "first": i ==0,
+            "last": word == sentence[-1][0]
+            }
+
+
 def word(sentence, i, history):
+    print(sentence[i])
     return {"word": sentence[i]}
 def first(sentence,i,history):
     return {"first": i == 0}
@@ -49,4 +66,3 @@ def numeric(sentence, i, history):
     return{"numeric": sentence[i].isdigit()}
 def hascapital(sentence, i, history):
     return{"hascapital" : sentence[i][1:].lower() != sentence[i][1:].lower()}
-    
