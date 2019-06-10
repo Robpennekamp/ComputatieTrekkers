@@ -77,7 +77,7 @@ class _ConsecutiveNPChunkTagger(nltk.TaggerI):
             for i, (word, tag) in enumerate(tagged_sent):
                 featureset = self._featuremap(untagged_sent, i, history) 
                 train_set.append( (featureset, tag) )
-                history.append(tag)
+                history.append(tag) 
         self.classifier = nltk.MaxentClassifier.train( 
             train_set, algorithm=algorithm, trace=0)
 
