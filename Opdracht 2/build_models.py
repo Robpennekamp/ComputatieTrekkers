@@ -15,7 +15,7 @@ training = conll.chunked_sents("ned.train") # SHORT DATASET: FOR DEMO/DEBUGGING 
 testing = conll.chunked_sents("ned.testa")
 simple_nl_NER = ConsecutiveNPChunker(features.simple_features_2, training, 'NaiveBayes')
 
-output = open("nl-tagger.pickle", "wb")
+output = open("nl-NB.pickle", "wb")
 pickle.dump(simple_nl_NER, output)
 output.close()
 
