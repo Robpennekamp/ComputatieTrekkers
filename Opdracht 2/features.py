@@ -64,3 +64,35 @@ def simple_features_2(sentence, i, history):
             "preqin":'' if i==0 else sentence[i-1][0] == 'in',
             
             }
+    
+    
+def simple_features_3(sentence, i, history):
+    """Simplest chunker features: Just the POS tag of the word"""
+    word, pos = sentence[i]
+    hasdigit = False
+    for c in word:
+        if c.isdigit():
+            hasdigit = True
+    
+    #print(word)
+    return { 
+            "pos": pos,
+            "pre3": word[:3],
+            "pre4": word[:4],
+            "suf3": word[-3:],
+            "suf4": word[-4:],
+            "cap": word[0] == word[0].upper(),
+            "hascaps": word[1:].lower() != word[1:],
+            "first": i ==0,
+            "numeric": word.isdigit(),
+            "hypen": "-" in word,
+            "colon": ":" in word,
+            "pred": '' if i==0 else sentence[i-1][0],
+            "predpos": '' if i==0 else sentence[i-1][1],
+            "preq": '' if word == sentence[-1][0] else sentence[i+1][0],
+            "seqpos": '' if word == sentence[-1][0] else sentence[i+1][1],
+            "seqcaps": '' if word == sentence[-1][0] else sentence[i+1][0].upper() == sentence[i+1],
+            "date": hasdigit and "-" in word,
+            "preqin":'' if i==0 else sentence[i-1][0] == 'in',
+            
+            }

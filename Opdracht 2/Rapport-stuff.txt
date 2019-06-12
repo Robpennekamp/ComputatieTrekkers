@@ -1,0 +1,7 @@
+ChunkParse score:
+    IOB Accuracy:  96.3%%
+    Precision:     65.1%%
+    Recall:        63.9%%
+    F-Measure:     64.5%%
+
+GIS, simple_features_3
